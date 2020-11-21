@@ -1,0 +1,167 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Clinica Veterinaria Dr. Pet</title>
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+	crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="resources/css/styles.css" rel="stylesheet" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="resources/js/myjs.js"></script>
+</head>
+
+<body id="page-top">
+	<header>
+		<!-- Navigation-->
+		<nav
+			class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
+			id="mainNav">
+			<div class="container">
+				<a class="navbar-brand js-scroll-trigger" href="home"><i
+					class='fas fa-paw' style='font-size: 36px'></i> Veterinaria Dr. Pet</a>
+				<button
+					class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
+					type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					Menu <i class="fas fa-bars"></i>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+							href="home">Volver</a></li>
+						<li class="nav-item mx-0 mx-lg-1"><a
+							class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+							href="listarDuenio">Dueños</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+	<!-- Portfolio Section-->
+	<section class="page-section portfolio" id="portfolio">
+		<div class="jumbotron">
+			<h2>
+				Registro Mascotas <i style='font-size: 24px' class='fas'>&#xf6be;</i><i
+					style='font-size: 24px' class='fas'>&#xf520;</i><i
+					style='font-size: 24px' class='fas'>&#xf6d3;</i>
+			</h2>
+			<p>Escriba una palabra para comenzar la búsqueda:</p>
+			<input class="form-control" id="myInput" type="text"
+				placeholder="Search.."> <br>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">NOMBRE</th>
+						<th scope="col">FECHA NACIMIENTO</th>
+						<th scope="col">FECHA VISITA</th>
+						<th scope="col">DESCRIPCIÓN</th>
+						<th scope="col">DUEÑO</th>
+					</tr>
+				</thead>
+				<tbody id="myTable">
+					<c:forEach items="${fichas}" var="f">
+						<tr>
+
+							<td>${f.id}</td>
+							<td>${f.nombre}</td>
+							<td>${f.fechaNac}</td>
+							<td>${f.fechaVisita}</td>
+							<td>${f.descripcion}</td>
+							<td>${f.duenio.nombre}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+
+			</table>
+			<br>
+			<form action="home" method="get">
+				<button type="submit" class="btn btn-success">
+					volver <i style='font-size: 24px' class='fas'>&#xf1b0;</i>
+				</button>
+			</form>
+			<br>
+		</div>
+	</section>
+
+	<!-- Footer-->
+	<footer class="footer text-center">
+		<div class="container">
+			<div class="row">
+				<!-- Footer Location-->
+				<div class="col-lg-4 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4">Dirección</h4>
+					<p class="lead mb-0">
+						Av. Los Leones 573, <br /> Providencia, Región Metropolitana.<br>
+						Tel. +569 44600355
+					</p>
+				</div>
+				<!-- Footer Social Icons-->
+				<div class="col-lg-4 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4">Encuéntranos en la Web</h4>
+					<a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+						class="fab fa-fw fa-facebook-f"></i></a> <a
+						class="btn btn-outline-light btn-social mx-1" href="#!"><i
+						class="fab fa-fw fa-twitter"></i></a> <a
+						class="btn btn-outline-light btn-social mx-1" href="#!"><i
+						class="fab fa-fw fa-linkedin-in"></i></a> <a
+						class="btn btn-outline-light btn-social mx-1" href="#!"><i
+						class="fab fa-fw fa-dribbble"></i></a>
+				</div>
+				<!-- Footer About Text-->
+				<div class="col-lg-4">
+					<h4 class="text-uppercase mb-4">Acerca de la clínica</h4>
+					<p class="lead mb-0">Fundada desde el año 2000, completamente
+						dedicados al bienestar y salud de todos nuestros clientes peludos
+						o escamosos.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Copyright Section-->
+	<div class="copyright py-4 text-center text-white">
+		<div class="container">
+			<small>Copyright © Derechos Reservados, Chile 2020</small>
+		</div>
+	</div>
+	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+	<div class="scroll-to-top d-lg-none position-fixed">
+		<a class="js-scroll-trigger d-block text-center text-white rounded"
+			href="#page-top"><i class="fa fa-chevron-up"></i></a>
+	</div>
+
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+	<!-- Third party plugin JS-->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<!-- Contact form JS-->
+	<script src="assets/mail/jqBootstrapValidation.js"></script>
+	<script src="assets/mail/contact_me.js"></script>
+	<!-- Core theme JS-->
+	<script src="/resources/js/myjs.js"></script>
+</body>
+</html>
